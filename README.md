@@ -17,7 +17,7 @@ First public release.
 - Backs up every original and records hashes in `backup/manifest.json` — `revert` always works.
 - First full scan is slow (WolvenKit unpacks whole archives); results are cached, second scan is instant.
 
-- MIT License
+MIT License
 
 Copyright (c) 2026 clippingfixer contributors
 
