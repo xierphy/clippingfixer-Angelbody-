@@ -20,5 +20,5 @@ First public release.
 ## License
 
 - MIT
-+ [MIT]{LICENSE}
+
 
