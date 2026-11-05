@@ -1,0 +1,11 @@
+{
+    "meshCandidates":  [
+                           "_w_angel",
+                           "_angel"
+                       ],
+    "stagePath":  "D:\\Vortex Mods\\cyberpunk2077",
+    "gamePath":  "D:\\SteamLibrary\\steamapps\\common\\Cyberpunk 2077",
+    "bodyTag":  "angel",
+    "dotnetRoot":  "C:\\tools\\dotnet8",
+    "wolvenkit":  "C:\\tools\\WolvenKit.Console-8.15.0\\WolvenKit.CLI.exe"
+}
