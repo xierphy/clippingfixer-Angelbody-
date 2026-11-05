@@ -24,7 +24,7 @@ clippingfixer 做的事很简单：**把模板直接替换成包里已经存在�
 + tony_ltph_top\tony_ltph_top_w_angel.mesh
 ```
 
-如果包内**没有** ANGEL 网格，本工具不会乱改（报告成 `needs-refit`），你只能用 Refit Studio 之类工具重做网格。
+如果包内**没有** ANGEL 网格，本工具不会乱改（报告成 `needs-review`），你只能用 Refit Studio 之类工具重做网格。
 
 ---
 
@@ -52,7 +52,7 @@ clippingfixer 做的事很简单：**把模板直接替换成包里已经存在�
   "wolvenkit": "C:\\tools\\WolvenKit.Console-8.15.0\\WolvenKit.CLI.exe",
   "dotnetRoot": "C:\\tools\\dotnet8",
   "bodyTag": "angel",
-  "meshCandidates": ["_w_angel", "_angel"]
+  "meshCandidates": ["w_angel", "angel"]
 }
 ```
 
@@ -69,12 +69,12 @@ run.cmd -Mode scan -Filter "tony_*"
 
 ```
 fixable      tony_goth_girl_outfit_3.archive  refs=8 fixable=7 needRefit=1
-needs-refit  tony_street_outfit.archive       refs=7 fixable=3 needRefit=4
+needs-review  tony_street_outfit.archive       refs=7 fixable=3 needRefit=4
 clean        tony_everyday_outfit.archive     refs=0
 ```
 
 - `fixable`：包内有 ANGEL 网格，能直接改。
-- `needs-refit`：有引用但包内缺 ANGEL 网格，改了也没用 → 需要重做网格。
+- `needs-review`：有引用，但包内缺目标身材的网格。**这不等于一定会穿模**：实测鞋、手套、背包、宽松外套这类条目本来就有 10 mm 以上的间隙，游戏回退到 `base_body` 网格也看不出来；真正会顶穿的是紧身衣物（连衣裙 / 上衣 / 内衣）。要确认只能量网格，或者进游戏试穿。
 - `clean`：没有模板引用，无需处理。
 
 4. 确认没问题后执行：
@@ -152,7 +152,7 @@ clippingfixer/
 
 ## 已知限制
 
-- **包内没有目标身材网格**时无法修复（报告为 `needs-refit`）。这类条目通常是鞋、手套、背包、帽子、毛领等，需要先用 [Refit Studio](https://github.com/ANIMEFREG/refit-studio) 之类工具重建网格。
+- **包内没有目标身材网格**时无法修复（报告为 `needs-review`）。这类条目通常是鞋、手套、背包、帽子、毛领等，需要先用 [Refit Studio](https://github.com/ANIMEFREG/refit-studio) 之类工具重建网格。
 - **只改模板，不重建网格**：如果衣服本身的网格是按别的身材做的，钉死 ANGEL 网格只会让它"变成 ANGEL 版的衣服"，不会自动贴合。
 - `archive\pc\mod\` 里可能存在同名旧副本，加载顺序会盖过 `mods\` 那份。本工具会一并改掉（前提是它存在于该目录）。
 - 工具只处理 `{body}` 模板这一种写法；如果某个包用的是别的动态机制（例如运行时按 tag 切换 `.app`），需要单独处理。

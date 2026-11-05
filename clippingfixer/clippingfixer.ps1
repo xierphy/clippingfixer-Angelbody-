@@ -189,7 +189,7 @@ function Get-ArchiveState {
             }
             Remove-Item $j -Force -ErrorAction SilentlyContinue
         }
-        $state = if ($refs -eq 0) { 'clean' } elseif ($fixable -gt 0) { 'fixable' } else { 'needs-refit' }
+        $state = if ($refs -eq 0) { 'clean' } elseif ($fixable -gt 0) { 'fixable' } else { 'needs-review' }
         return [pscustomobject]@{ State = $state; Refs = $refs; Fixable = $fixable; NeedRefit = $needRefit; Entries = $entries.Count }
     } finally { Remove-Item $work -Recurse -Force -ErrorAction SilentlyContinue }
 }
